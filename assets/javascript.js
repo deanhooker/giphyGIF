@@ -12,7 +12,7 @@ function renderButtons() {
     for (i = 0; i < topics.length; i++) {
 
         var btn = $("<button>");
-        btn.addClass("gif-button");
+        btn.addClass("gif-button btn button-default");
         btn.attr("data-name", topics[i]);
         btn.text(topics[i]);
         $("#buttons").append(btn);
@@ -71,6 +71,24 @@ function animate() {
         $(this).attr("gif-state", "still");
       }
 }
+
+function newButton(event) {
+
+    //prevent submit default
+    event.preventDefault();
+
+    //new button variable
+    var newBtn = $("#new-gif").val();
+
+    topics.push(newBtn);
+
+    //run render buttons function
+    renderButtons();
+}
+
+
+// on click add new button
+$(document).on("click", "#submit-gif", newButton);
 
 // on click function to run displayGifs
 $(document).on("click", ".gif-button", displayGifs);

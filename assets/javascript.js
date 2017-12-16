@@ -1,7 +1,7 @@
 // set global variables
 var APIKey = "x4EzZdrAesHdJHMXbiEQQhSJBvCBg4tl";
 
-var topics = ["james franco", "seth rogen", "arnold schwarzenegger", "hot rod", "tenacious d", "neil degrasse tyson", "carl sagan", "hamilton"];
+var topics = ["James Franco", "Jackie Chan", "Arnold Schwarzenegger", "Hot Rod", "Tenacious D", "Neil DeGrasse Tyson", "Hamilton", "Archer", "Dave Chappelle", "Stranger Things", "Seinfeld"];
 var returnQty = 10;
 
 // create function to render search buttons
@@ -40,6 +40,7 @@ function displayGifs() {
             var stillUrl = response.data[i].images.original_still.url;
             var animatedUrl = response.data[i].images.original.url;
             var imageRating = response.data[i].rating;
+            var imageDiv = $("<div>")
 
             //use jquery to create a html element of type image
             var gifImage = $("<img>");
@@ -52,8 +53,14 @@ function displayGifs() {
             gifImage.attr("gif-state", "still");
 
             //Prepend returned image to images div
-            $("#gifs").append(gifImage);
-            $("#gifs").append("<p>Rating: " + imageRating + "</p>");
+            // $("#gifs").append(gifImage);
+            // $("#gifs").append("<p>Rating: " + imageRating + "</p>");
+
+            imageDiv.append(gifImage);
+            imageDiv.append("<p>Rating: " + imageRating + "</p>");
+            imageDiv.addClass("image-div");
+
+            $("#gifs").append(imageDiv);
 
         }
     });
